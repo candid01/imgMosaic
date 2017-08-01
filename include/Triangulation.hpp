@@ -4,8 +4,8 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#ifndef HEADERS_TRIANGULATION_HPP_
-#define HEADERS_TRIANGULATION_HPP_
+#ifndef INCLUDE_TRIANGULATION_HPP_
+#define INCLUDE_TRIANGULATION_HPP_
 
 //#include <Eigen/Dense>
 #include <Eigen/Core>
@@ -31,4 +31,4 @@ public:
 private:
 	Mat points3D;
 };
-#endif /* HEADERS_TRIANGULATION_HPP_ */
+#endif /* INCLUDE_TRIANGULATION_HPP_ */

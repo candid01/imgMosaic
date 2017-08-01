@@ -4,7 +4,7 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#include "../headers/Match.hpp"
+#include "../include/Match.hpp"
 
 // Getter
 vector<DMatch> Match::getMaches()

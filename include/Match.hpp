@@ -4,14 +4,14 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#ifndef HEADERS_MATCH_HPP_
-#define HEADERS_MATCH_HPP_
+#ifndef INCLUDE_MATCH_HPP_
+#define INCLUDE_MATCH_HPP_
 
 #include "opencv2/highgui.hpp"
 #include "opencv2/xfeatures2d.hpp"
 #include <stdio.h>
 
-#include "Features.hpp"
+#include "../include/Features.hpp"
 
 using cv::DMatch;
 using cv::KeyPoint;
@@ -38,4 +38,4 @@ private:
 	vector<DMatch>   		 maches;
 	vector<vector<Point2f> > points2DList;
 };
-#endif /* HEADERS_MATCH_HPP_ */
+#endif /* INCLUDE_MATCH_HPP_ */

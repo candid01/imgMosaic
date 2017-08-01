@@ -4,7 +4,7 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#include "../headers/CameraParameters.hpp"
+#include "../include/CameraParameters.hpp"
 
 CameraParameters::CameraParameters(
 									int   imgCols,

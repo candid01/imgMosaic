@@ -4,8 +4,8 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#ifndef HEADERS_CAMERAPARAMETERS_HPP_
-#define HEADERS_CAMERAPARAMETERS_HPP_
+#ifndef INCLUDE_CAMERAPARAMETERS_HPP_
+#define INCLUDE_CAMERAPARAMETERS_HPP_
 
 #include <iostream>
 #include <math.h>
@@ -53,4 +53,4 @@ private:
 	float 		 metersGSD;
 	CameraParams camera;
 };
-#endif /* HEADERS_CAMERAPARAMETERS_HPP_ */
+#endif /* INCLUDE_CAMERAPARAMETERS_HPP_ */

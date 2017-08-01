@@ -4,7 +4,8 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#include "../headers/Features.hpp"
+#include "../include/Features.hpp"
+
 #include <iostream>
 
 // Getters

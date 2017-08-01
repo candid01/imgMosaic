@@ -4,7 +4,7 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#include "../headers/Triangulation.hpp"
+#include "../include/Triangulation.hpp"
 
 // Getter
 Mat Triangulation::getPoints3D()

@@ -4,7 +4,7 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#include "../headers/Image.hpp"
+#include "../include/Image.hpp"
 
 // Getter
 CameraParameters Image::getCamInfo()
