@@ -4,13 +4,13 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#ifndef HEADERS_IMAGE_CPP_
-#define HEADERS_IMAGE_CPP_
+#ifndef IMAGE_CPP_
+#define IMAGE_CPP_
 
 #include "opencv2/highgui.hpp"  				// using to show image in member-function
 #include <string>			    				// import class string
-#include "../include/CameraParameters.hpp" 				// import class CameraParameters
-#include "../include/Metadata.hpp" 	    				// import class Metadata
+#include "../include/CameraParameters.hpp" 		// import class CameraParameters
+#include "../include/Metadata.hpp" 	    		// import class Metadata
 
 using namespace cv;
 
@@ -34,4 +34,4 @@ private:
 	Mat 			 image; 					// image
 	CameraParameters camInfo;					// camera information
 };
-#endif /* HEADERS_IMAGE_CPP_ */
+#endif /* IMAGE_CPP_ */

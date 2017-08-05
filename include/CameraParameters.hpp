@@ -4,8 +4,8 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#ifndef INCLUDE_CAMERAPARAMETERS_HPP_
-#define INCLUDE_CAMERAPARAMETERS_HPP_
+#ifndef CAMERAPARAMETERS_HPP_
+#define CAMERAPARAMETERS_HPP_
 
 #include <iostream>
 #include <math.h>
@@ -42,7 +42,9 @@ public:
 	void setPpx(double ppx);
 	void setPpy(double ppy);
 	void setRotation(float roll, float pitch, float yaw);
+	void setRotation(Mat rotation);
 	void setTranslation(float tx, float ty, float tz);
+	void setTranslation(Mat translation);
 
 	// Others Methods
 	Mat	getIntrinsec();
@@ -53,4 +55,4 @@ private:
 	float 		 metersGSD;
 	CameraParams camera;
 };
-#endif /* INCLUDE_CAMERAPARAMETERS_HPP_ */
+#endif /* CAMERAPARAMETERS_HPP_ */

@@ -4,8 +4,8 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#ifndef INCLUDE_MATCH_HPP_
-#define INCLUDE_MATCH_HPP_
+#ifndef MATCH_HPP_
+#define MATCH_HPP_
 
 #include "opencv2/highgui.hpp"
 #include "opencv2/xfeatures2d.hpp"
@@ -38,4 +38,4 @@ private:
 	vector<DMatch>   		 maches;
 	vector<vector<Point2f> > points2DList;
 };
-#endif /* INCLUDE_MATCH_HPP_ */
+#endif /* MATCH_HPP_ */

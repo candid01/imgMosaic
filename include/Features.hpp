@@ -4,8 +4,8 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#ifndef INCLUDE_FEATURES_HPP_
-#define INCLUDE_FEATURES_HPP_
+#ifndef FEATURES_HPP_
+#define FEATURES_HPP_
 
 #include "opencv2/xfeatures2d.hpp"												// import the library that has SURF implementation
 #include <opencv2/opencv.hpp>													// import the library to convert image color
@@ -26,4 +26,4 @@ private:
 	cv::Mat 				  descriptors;										// descriptor used in matching features algorithm
 	std::vector<cv::KeyPoint> keypoints;										// keypoints extracted from image
 };
-#endif /* INCLUDE_FEATURES_HPP_ */
+#endif /* FEATURES_HPP_ */

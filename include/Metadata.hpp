@@ -4,8 +4,8 @@
  *      Author: Leandro Candido
  *       Email: l.candido@usp.br
  */
-#ifndef INCLUDE_METADATA_HPP_
-#define INCLUDE_METADATA_HPP_
+#ifndef METADATA_HPP_
+#define METADATA_HPP_
 
 #include <fstream>						// used to ifstream type in function-member
 #include <iostream> 					// used to cout, endl in function-member
@@ -50,4 +50,4 @@ private:
 	// Other Method
 	float degree2radian(float degree); // convert Degree to Radians
 };
-#endif /* INCLUDE_METADATA_HPP_ */
+#endif /* METADATA_HPP_ */
