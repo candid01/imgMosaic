@@ -11,7 +11,7 @@ CameraParameters::CameraParameters(int imgCols, int imgRows, float focalLength, 
 {
 	double sx, sy;
 
-	this->metersGSD = 1 / GSD;
+	this->metersGSD  = 1 / GSD;
 	this->camera.ppx = imgCols / 2;
 	this->camera.ppy = imgRows / 2;
 
@@ -19,7 +19,7 @@ CameraParameters::CameraParameters(int imgCols, int imgRows, float focalLength, 
 	sy = sensorSizeY / imgRows;
 
 	this->camera.aspect = sy / sx;
-	this->camera.focal  = focalLength / sx;
+	this->camera.focal  = -focalLength / sx;
 
 	this->setRotation(roll, pitch, yaw);
 	this->setTranslation(tx, ty, tz);
@@ -95,13 +95,21 @@ void CameraParameters::setPpy(double ppy)
 
 void CameraParameters::setRotation(float roll, float pitch, float yaw)
 {
-	double Roll_cos  = cos(roll),  Roll_sin  = sin(roll),
+	double Roll_cos  = cos(roll) , Roll_sin  = sin(roll),
 		   Pitch_cos = cos(pitch), Pitch_sin = sin(pitch),
-		   Yaw_cos   = cos(yaw),   Yaw_sin   = sin(yaw);
+		   Yaw_cos   = cos(yaw)  , Yaw_sin   = sin(yaw);
 
-	Mat Rx = (Mat_<double>(3,3) << 1        , 0      ,          0, 		  0, Roll_cos, Roll_sin,         0, -Roll_sin, Roll_cos	),
-		Ry = (Mat_<double>(3,3) << Pitch_cos, 0      , -Pitch_sin, 		  0, 		1, 		  0, Pitch_sin, 		0, Pitch_cos),
-		Rz = (Mat_<double>(3,3) << Yaw_cos  , Yaw_sin,          0, -Yaw_sin, Yaw_cos , 		  0, 		 0, 		0, 1		);
+	Mat Rx = (Mat_<double>(3,3) << 1, 		 0,         0,
+								   0, Roll_cos, -Roll_sin,
+								   0, Roll_sin,  Roll_cos),
+
+		Ry = (Mat_<double>(3,3) << Pitch_cos, 0, Pitch_sin,
+										   0, 1, 		 0,
+								  -Pitch_sin, 0, Pitch_cos),
+
+		Rz = (Mat_<double>(3,3) << Yaw_cos, -Yaw_sin, 0,
+								   Yaw_sin,  Yaw_cos, 0,
+								  	  	 0,		   0, 1);
 
 		Mat R = (Rx * Ry * Rz);
 		R.convertTo(this->camera.R, CV_64F);
@@ -116,22 +124,22 @@ void CameraParameters::setRotation(Mat rotation)
 
 void CameraParameters::setTranslation(float tx, float ty, float tz)
 {
-	Mat R_t = this->getRotation().t();
 	Mat T   = (Mat_<double>(3,1) << tx, ty, tz);
 
-	Mat a = (-R_t.row(0) * T);
-	Mat b = (-R_t.row(1) * T);
-	Mat c = (-R_t.row(2) * T);
+	Mat a = -this->getRotation().t().row(0) * T;
+	Mat b = -this->getRotation().t().row(1) * T;
+	Mat c = -this->getRotation().t().row(2) * T;
 
-	Mat trans = (Mat_<double>(3,1) << (a.at<double>(0, 0) * this->getMetersGSD()) / this->getFocal(),
-									  (b.at<double>(0, 0) * this->getMetersGSD()) / this->getFocal(),
-									  (c.at<double>(0, 0) * this->getMetersGSD()) / this->getFocal());
+//	Mat trans = (Mat_<double>(3,1) << (a.at<double>(0, 0) * this->getMetersGSD()) / this->getFocal(),
+//									  (b.at<double>(0, 0) * this->getMetersGSD()) / this->getFocal(),
+//									  (c.at<double>(0, 0) * this->getMetersGSD()) / this->getFocal());
 
-//	Mat trans = (Mat_<double>(3,1) << a.at<double>(0, 0),
-//									  b.at<double>(0, 0),
-//									  c.at<double>(0, 0));
+	Mat trans = (Mat_<double>(3,1) << a.at<double>(0, 0),
+									  b.at<double>(0, 0),
+									  c.at<double>(0, 0));
 
 	trans.convertTo(this->camera.t, CV_64F);
+//	T.convertTo(this->camera.t, CV_64F);
 }
 
 
@@ -150,7 +158,7 @@ Mat CameraParameters::getIntrinsec()
 
 Mat	CameraParameters::getExtrinsec()
 {
-	Mat translation, extrinsec;
+	Mat extrinsec;
 	hconcat(camera.R, camera.t, extrinsec);
 	return extrinsec;
 }
